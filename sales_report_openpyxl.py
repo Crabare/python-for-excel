@@ -26,7 +26,7 @@ pivot = pd.pivot_table(df,
                        index="transaction_date", columns="store",
                        values="amount", aggfunc="sum")
 
-# Resample to end of month and assign an index name 
+# Resample to end of month and assign an index name
 summary = pivot.resample("M").sum()
 summary.index.name = "Month"
 
@@ -51,7 +51,7 @@ with pd.ExcelWriter(this_dir / "sales_report_openpyxl.xlsx",
     summary.to_excel(writer, sheet_name="Sheet1",
                      startrow=startrow - 1, startcol=startcol - 1)
 
-    # Get openpyxl book and sheet object 
+    # Get openpyxl book and sheet object
     book = writer.book
     sheet = writer.sheets["Sheet1"]
 
